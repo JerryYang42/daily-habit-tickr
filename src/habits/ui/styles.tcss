@@ -1,0 +1,106 @@
+Screen {
+    background: $background;
+}
+
+#heading {
+    padding: 1 2 0 2;
+    text-style: bold;
+    color: $text-primary;
+}
+
+#progress {
+    padding: 0 2 1 2;
+    color: $text-success;
+}
+
+#rows {
+    height: 1fr;
+    padding: 0 1;
+}
+
+#empty {
+    height: 1fr;
+    padding: 1 2;
+    color: $text-muted;
+}
+
+.row {
+    height: 1;
+    padding: 0 1;
+}
+
+.row.-done {
+    color: $text;
+}
+
+.row.-cursor {
+    background: $primary 25%;
+    text-style: bold;
+}
+
+/* ---- Review ---- */
+
+#review {
+    height: 1fr;
+    padding: 0 1;
+}
+
+#review #heading {
+    padding: 1 1 0 1;
+}
+
+.section-title {
+    padding: 1 1 0 1;
+    text-style: bold;
+    color: $text-primary;
+}
+
+.summary {
+    padding: 0 1;
+    color: $text-success;
+}
+
+#yesterday-rows {
+    height: auto;
+    padding: 0;
+}
+
+#week, #heatmap {
+    padding: 0 2;
+    height: auto;
+}
+
+/* ---- Modals ---- */
+
+AddPrompt, HelpScreen {
+    align: center middle;
+    background: $background 60%;
+}
+
+#prompt {
+    width: 64;
+    max-width: 100%;
+    height: auto;
+    padding: 1 2;
+    border: round $primary;
+    background: $surface;
+}
+
+#prompt-title, #help-title {
+    text-style: bold;
+    padding-bottom: 1;
+}
+
+#prompt-hint, #help-hint {
+    color: $text-muted;
+    padding-top: 1;
+}
+
+#help {
+    width: 60;
+    max-width: 100%;
+    height: auto;
+    padding: 1 2;
+    border: round $primary;
+    background: $surface;
+}

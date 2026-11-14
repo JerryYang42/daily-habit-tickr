@@ -232,6 +232,7 @@ tests/
 - **Performance:** startup should feel instant. `--version`, `--help` and `--where` don't import Textual, and the first screen loads only today's rows.
 - **Config:** `config.toml` is optional, and invalid values are rejected with a clear message and exit code 2. Defaults need no file.
 - **Commits:** small, one logical change each, conventional commit messages.
+- **Releases:** PRs are squash-merged, and the PR title becomes the commit subject on `main`. It must look like `type(scope): description` (scope optional), which the `PR title` workflow checks. `tag.yml` reads those subjects to pick the next version: `feat:` is a minor bump, `type!:` (or a `BREAKING CHANGE:` footer) is major, and anything else is patch. Put the `!` in the title for breaking changes.
 
 ## 8. Decisions
 

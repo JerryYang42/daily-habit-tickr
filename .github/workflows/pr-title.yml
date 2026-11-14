@@ -1,0 +1,30 @@
+name: PR title
+
+# Rejects pull request titles that the release workflow (tag.yml) can't read.
+# PRs are squash-merged and the title becomes the commit subject, so it decides
+# the version bump: "feat:" -> minor, "type!:" -> major, anything else -> patch.
+# Keep the pattern below aligned with the subject patterns in tag.yml.
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  title:
+    name: PR title
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check title format
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          if printf '%s\n' "$TITLE" | grep -Eq '^[a-z]+(\([^)]*\))?!?: .+'; then
+            echo "OK: $TITLE"
+          else
+            echo "::error::Title must look like 'type(scope): description' (scope optional, '!' before ':' for breaking changes). Got: $TITLE"
+            echo "Examples: 'feat: add habit export', 'fix(today): handle day rollover', 'feat!: change the config format'"
+            exit 1
+          fi

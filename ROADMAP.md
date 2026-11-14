@@ -10,6 +10,21 @@ Nothing in progress.
 
 ## Next
 
+- [ ] **Categories** (for example, Health, Work, Home)
+  - An optional `categories` table and a nullable `category_id` on habits and groups (needs migration `0002`)
+  - Today view grouped under collapsible category headers
+  - Filter by category, and per-category stats on the Review screen
+  - A key to cycle or filter categories, and a way to set the category from the add/edit prompt
+  - Open question: a group must belong to one category as a unit (its members inherit it)
+- [ ] Tabs that lists ALL, only non-complete, only done, reorder secondarily by undone first followed up by task done
+- [ ] Improve UI by align the text. Currently "[ ] Task 1" and "Water x8" does not align in terms of starting of text. "[ ]" does not count as text. 
+
+## Later
+
+- [ ] **Sync across devices.** The schema is already ready for it (UUIDv7 IDs, `cleared` tombstones, `updated_at`, `device_id`). The likely rule is last-write-wins per `(habit_id, day)`. Reordering already writes one row at a time.
+- [ ] **A small non-interactive CLI** on the same core (for example, `habits done water` or `habits list`) for scripts and quick capture
+- [ ] **A forgiving, positive-only alternative to streaks**, such as "active days this week" (only if streaks are ever wanted)
+- [ ] **Backfill of the previous day**, with a gentle "forgot to tick it" flow. Out of scope by design for now: past days are read-only, and undo is limited to the same day.
 - [ ] **Encouragement copy**
   - Rotating warm messages when a habit is checked off
   - A "welcome back" tone after a gap in use (never "you missed N days")
@@ -20,16 +35,3 @@ Nothing in progress.
 - [ ] **Export** to JSON and CSV, so data is never locked in
   - Include habits, groups and completions (tombstones optional)
   - Consider a matching import
-- [ ] **Categories** (for example, Health, Work, Home)
-  - An optional `categories` table and a nullable `category_id` on habits and groups (needs migration `0002`)
-  - Today view grouped under collapsible category headers
-  - Filter by category, and per-category stats on the Review screen
-  - A key to cycle or filter categories, and a way to set the category from the add/edit prompt
-  - Open question: a group must belong to one category as a unit (its members inherit it)
-
-## Later
-
-- [ ] **Sync across devices.** The schema is already ready for it (UUIDv7 IDs, `cleared` tombstones, `updated_at`, `device_id`). The likely rule is last-write-wins per `(habit_id, day)`. Reordering already writes one row at a time.
-- [ ] **A small non-interactive CLI** on the same core (for example, `habits done water` or `habits list`) for scripts and quick capture
-- [ ] **A forgiving, positive-only alternative to streaks**, such as "active days this week" (only if streaks are ever wanted)
-- [ ] **Backfill of the previous day**, with a gentle "forgot to tick it" flow. Out of scope by design for now: past days are read-only, and undo is limited to the same day.

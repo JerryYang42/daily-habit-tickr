@@ -115,3 +115,7 @@ If you change the UI on purpose, update the snapshots with `uv run pytest tests/
 The code is split into three layers: `ui → core ← db`. `habits.core` is plain Python with no Textual or SQLite imports, and `tests/test_layering.py` checks that. See [docs/design.md](docs/design.md) for how it all works and why, and [CHANGELOG.md](CHANGELOG.md) for release history.
 
 Schema changes go in a new numbered file under `src/habits/db/migrations/` (`0002_*.sql`, and so on). Migrations only move forward, each one runs in a single transaction, and the app refuses to open a database that's newer than it understands.
+
+## Releasing
+
+Use Conventional Commit titles (`feat:`, `fix:`, `docs:`, and so on; `!` or a `BREAKING CHANGE:` footer for breaking changes). On every push to `main`, release-please opens or updates a `chore(main): release X.Y.Z` PR that bumps the version in `pyproject.toml`, `uv.lock` and `src/habits/__init__.py` and updates `CHANGELOG.md`. Merge that PR to ship: it creates the `vX.Y.Z` tag and the GitHub Release. See [docs/release-plan.md](docs/release-plan.md).

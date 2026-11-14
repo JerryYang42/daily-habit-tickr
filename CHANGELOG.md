@@ -5,6 +5,7 @@ All notable changes to this project are listed here. The format is based on [Kee
 ## [Unreleased]
 
 ### Changed
+- Releases now go through a release-please PR (`chore(main): release X.Y.Z`) instead of an automatic tag on every merge to `main`. See [docs/release-plan.md](docs/release-plan.md).
 - Reorganized the project docs: `PLAN.md` became [docs/design.md](docs/design.md) (rewritten to match the shipped code), [ROADMAP.md](ROADMAP.md) is now grouped as Now / Next / Later, and this changelog and `CLAUDE.md` were added.
 
 ## [0.1.0] - 2026-11-14

@@ -1,0 +1,25 @@
+name: Release Please
+
+# Opens (and keeps updated) a release PR from Conventional Commits on main.
+# Merging that PR creates the vX.Y.Z tag and the GitHub Release.
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        with:
+          # A PAT or GitHub App token is needed for CI to run on the release PR
+          # (PRs opened with GITHUB_TOKEN don't trigger workflows). Falls back to
+          # GITHUB_TOKEN until RELEASE_PLEASE_TOKEN is set.
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

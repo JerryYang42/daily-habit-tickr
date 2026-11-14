@@ -5,6 +5,7 @@ All notable changes to this project are listed here. The format is based on [Kee
 ## [Unreleased]
 
 ### Changed
+- PR titles must follow `type(scope): description` (checked by CI). Pull requests are squash-merged and the title decides the release version bump.
 - Reorganized the project docs: `PLAN.md` became [docs/design.md](docs/design.md) (rewritten to match the shipped code), [ROADMAP.md](ROADMAP.md) is now grouped as Now / Next / Later, and this changelog and `CLAUDE.md` were added.
 
 ## [0.1.0] - 2026-11-14

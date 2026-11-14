@@ -11,3 +11,4 @@ build/
 *.db-wal
 *.db-shm
 snapshot_report.html
+CLAUDE.local.md

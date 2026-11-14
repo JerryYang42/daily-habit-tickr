@@ -112,6 +112,6 @@ uv run mypy                # types (strict)
 
 If you change the UI on purpose, update the snapshots with `uv run pytest tests/ui/test_snapshots.py --snapshot-update` and look over the report before you commit.
 
-The code is split into three layers: `ui → core ← db`. `habits.core` is plain Python with no Textual or SQLite imports, and `tests/test_layering.py` checks that. See [PLAN.md](PLAN.md) for the design.
+The code is split into three layers: `ui → core ← db`. `habits.core` is plain Python with no Textual or SQLite imports, and `tests/test_layering.py` checks that. See [docs/design.md](docs/design.md) for how it all works and why, and [CHANGELOG.md](CHANGELOG.md) for release history.
 
 Schema changes go in a new numbered file under `src/habits/db/migrations/` (`0002_*.sql`, and so on). Migrations only move forward, each one runs in a single transaction, and the app refuses to open a database that's newer than it understands.
